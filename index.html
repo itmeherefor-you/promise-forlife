@@ -3,333 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Une question importante... ❤️ | Pour toi</title>
-    <link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/2764.png">
+    <title>Ma Question pour toi... ❤️</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            user-select: none;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
-            background: linear-gradient(-45deg, #ff758c, #ff7eb3, #9d4edd, #4361ee);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom right, #ffafcc, #ff4d6d);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0;
             overflow: hidden;
-            color: #2d00aa;
-            padding: 20px;
+            color: #590d22;
         }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 3rem 2rem;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-
-        .container::before {
-            content: "❤️";
-            position: absolute;
-            font-size: 300px;
-            opacity: 0.03;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-        }
-
         h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 2.5rem;
-            line-height: 1.3;
-            position: relative;
-            z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
         }
-
         .buttons {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
         }
-
         button {
-            padding: 20px 50px;
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            padding: 15px 40px;
+            font-size: 1.5rem;
             border: none;
-            border-radius: 20px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s;
             font-weight: bold;
-            min-width: 200px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
         }
-
-        button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
-            border-radius: 20px;
-        }
-
         #btnOui {
-            background: linear-gradient(135deg, #38b000, #2d9100);
+            background-color: #38b000;
             color: white;
-            transform: translateY(0);
         }
-
         #btnNon {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            background-color: #e63946;
             color: white;
-            position: relative;
+            position: relative; /* Important pour l'animation JS */
         }
-
-        #btnOui:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(56, 176, 0, 0.4);
-        }
-
-        .hidden { 
-            display: none !important; 
-        }
-
+        #btnOui:hover { transform: scale(1.1); }
+        .hidden { display: none !important; }
         #pageOui {
-            text-align: center;
-            position: relative;
-            z-index: 1;
+            font-size: 3rem;
         }
-
-        #pageOui h1 {
-            animation: textGlow 2s infinite alternate;
+        .heart {
+            font-size: 4rem;
+            animation: pulse 1s infinite;
         }
-
-        @keyframes textGlow {
-            from { color: #2d00aa; }
-            to { color: #ff006e; }
-        }
-
-        .heart-container {
-            font-size: 5rem;
-            margin-bottom: 2rem;
-            animation: heartbeat 1.2s infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
+        @keyframes pulse {
+            0% { transform: scale(1); }
             50% { transform: scale(1.3); }
-        }
-
-        .confetti {
-            position: fixed;
-            width: 15px;
-            height: 15px;
-            background: #ff006e;
-            border-radius: 50%;
-            animation: fall linear forwards;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .footer {
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: #666;
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .container {
-                padding: 2rem 1.5rem;
-            }
-            
-            .buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            button {
-                width: 100%;
-                min-width: unset;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
     <!-- PAGE 1 : La Question -->
     <div id="pageQuestion" class="container">
-        <h1>💌 Mon amour, acceptes-tu d'être mon/ma Valentine pour l'éternité ? 🌹</h1>
+        <h1>Mon cœur, veux-tu être mon Valentine cette année ? 🌹</h1>
         <div class="buttons">
-            <button id="btnOui">OUI ! Absolument ! ❤️</button>
-            <button id="btnNon">Je dois réfléchir...</button>
+            <button id="btnOui">OUI ! Mille fois OUI ! ❤️</button>
+            <button id="btnNon">Euh... Non ?</button>
         </div>
-        <p class="footer">(Choisis avec ton cœur, pas avec ta tête)</p>
     </div>
 
     <!-- PAGE 2 : Réaction OUI -->
     <div id="pageOui" class="container hidden">
-        <div class="heart-container">🎉💖🥂</div>
-        <h1>YOUPI ! TU VIENS DE ME RENDRE L'ÊTRE LE PLUS HEUREUX DU MONDE !</h1>
-        <p style="font-size: 1.5rem; margin-top: 1.5rem;">
-            Je t'aime plus que tout au monde.<br>
-            Prépare-toi pour la plus belle des surprises...<br>
-            <span style="font-size: 1rem; display: block; margin-top: 1rem;">
-                PS : Cette réponse est officielle et enregistrée sur GitHub pour l'éternité 😉
-            </span>
-        </p>
-        <button onclick="location.reload()" style="background: #9d4edd; margin-top: 2rem;">
-            Voir à nouveau la question
-        </button>
+        <div class="heart">🥳</div>
+        <h1>GÉNIAL ! TU VAS ME RENDRE LE PLUS HEUREUX DES HOMMES/FILLES !</h1>
+        <p>Je t'aime plus que tout. On va passer une superbe soirée ! 🥂<br><small>Ferme les yeux le 14, j'ai une surprise...</small></p>
     </div>
 
     <script>
-        // Éléments du DOM
+        // Récupérer les éléments
         const pageQuestion = document.getElementById('pageQuestion');
         const pageOui = document.getElementById('pageOui');
         const btnOui = document.getElementById('btnOui');
         const btnNon = document.getElementById('btnNon');
 
-        // Effets de confettis
-        function createConfetti() {
-            for (let i = 0; i < 150; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
-                confetti.style.width = Math.random() * 15 + 5 + 'px';
-                confetti.style.height = confetti.style.width;
-                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(confetti);
-                
-                setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
-            }
-        }
-
-        // Bouton OUI
+        // --- Gestion du bouton OUI ---
         btnOui.addEventListener('click', function() {
-            // Effet de clic
-            this.style.transform = 'scale(0.95)';
-            
-            setTimeout(() => {
-                pageQuestion.classList.add('hidden');
-                pageOui.classList.remove('hidden');
-                createConfetti();
-                
-                // Petite surprise audio optionnelle
-                try {
-                    const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3');
-                    audio.volume = 0.3;
-                    audio.play();
-                } catch (e) {
-                    console.log("Musique de victoire !");
-                }
-            }, 300);
+            pageQuestion.classList.add('hidden');
+            pageOui.classList.remove('hidden');
+            // Lance des confettis si tu veux ! (Cherche "canvas-confetti" sur le web)
         });
 
-        // Bouton NON espiègle
-        let escapeCount = 0;
-        const messages = [
-            "Sûre ? 🥺",
-            "Vraiment ? 😢",
-            "Réfléchis bien...",
-            "Tu me brises le cœur 💔",
-            "Dernière chance !",
-            "Bon d'accord... Mais si !",
-            "C'est NON à 'NON' !"
-        ];
+        // --- Gestion du bouton NON ESPIÈGLE ---
+        let clickCount = 0;
+        const messagesNon = ["Sûr ?", "Vraiment ?", "Réfléchis bien...", "Dernière chance !", "Tu es têtu(e) !", "Bon, okay... 😢"];
 
         btnNon.addEventListener('click', function() {
-            escapeCount++;
-            
-            // Effet de fuite
-            const maxX = window.innerWidth - this.offsetWidth;
-            const maxY = window.innerHeight - this.offsetHeight;
-            
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
-            
-            this.style.position = 'fixed';
-            this.style.left = randomX + 'px';
-            this.style.top = randomY + 'px';
-            
+            // Faire bouger le bouton aléatoirement
+            const x = Math.random() * (window.innerWidth - btnNon.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNon.offsetHeight);
+
+            btnNon.style.position = 'fixed';
+            btnNon.style.left = x + 'px';
+            btnNon.style.top = y + 'px';
+
             // Changer le texte
-            if (escapeCount < messages.length) {
-                this.textContent = messages[escapeCount - 1];
+            if (clickCount < messagesNon.length) {
+                btnNon.textContent = messagesNon[clickCount];
             } else {
-                // Forcer le OUI après trop d'essais
-                this.style.display = 'none';
-                setTimeout(() => {
-                    pageQuestion.classList.add('hidden');
-                    pageOui.classList.remove('hidden');
-                    createConfetti();
-                }, 500);
+                // Après plusieurs clics, forcer le OUI
+                pageQuestion.classList.add('hidden');
+                pageOui.classList.remove('hidden');
             }
-            
-            // Rétrécir
-            const scale = 1 - (escapeCount * 0.1);
-            this.style.transform = `scale(${scale})`;
-            
-            // Changer la couleur
-            const hue = 0 + (escapeCount * 15);
-            this.style.background = `linear-gradient(135deg, hsl(${hue}, 100%, 65%), hsl(${hue + 10}, 100%, 55%))`;
+
+            // Réduire sa taille
+            const currentSize = 1.5 - (clickCount * 0.1);
+            btnNon.style.fontSize = currentSize + 'rem';
+
+            clickCount++;
         });
 
-        // Effet au survol du NON aussi
+        // Empêcher de sortir de l'écran
         btnNon.addEventListener('mouseover', function() {
-            if (escapeCount > 2) {
-                const maxX = window.innerWidth - this.offsetWidth;
-                const maxY = window.innerHeight - this.offsetHeight;
-                
-                this.style.left = Math.random() * maxX + 'px';
-                this.style.top = Math.random() * maxY + 'px';
-            }
-        });
-
-        // Effet de frappe sur le clavier pour la touche "O"
-        document.addEventListener('keydown', (e) => {
-            if (e.key.toLowerCase() === 'o') {
-                btnOui.click();
-                btnOui.style.animation = 'pulse 0.5s';
+            // Petit effet supplémentaire : bouge un peu au survol aussi
+            if (clickCount > 2) {
+                const x = Math.random() * (window.innerWidth - btnNon.offsetWidth);
+                const y = Math.random() * (window.innerHeight - btnNon.offsetHeight);
+                btnNon.style.left = x + 'px';
+                btnNon.style.top = y + 'px';
             }
         });
     </script>
